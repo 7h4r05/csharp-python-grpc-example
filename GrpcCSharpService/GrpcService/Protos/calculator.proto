@@ -1,0 +1,29 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "GrpcService";
+
+package calculator;
+
+service Calculator {
+  rpc Add (AddRequest) returns (AddReply);
+  rpc Random (RandomRequest) returns (RandomReply);
+}
+
+message AddRequest {
+  double a = 1;
+  double b = 2;
+}
+
+message AddReply {
+  double sum = 1;
+}
+
+message RandomRequest{
+  optional google.protobuf.Int32Value min = 1;
+  optional google.protobuf.Int32Value max = 2;
+}
+
+message RandomReply {
+  int32 result = 1;
+}
